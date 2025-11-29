@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student View Page</title>
+        <style>
+            *{
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            h1{
+                text-align: center;
+                margin: 20px 0;
+            }
+            table{
+                margin: 20px auto;
+                padding: 0;
+            }
+            table tr th, tr td{
+                border: 1px solid #212121;
+                padding: 10px;
+            }
+            .btn{
+                background-color: rgb(0, 55, 139);
+                color: white;
+                display: inline-block;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                border: none;
+            }
+            form{
+                margin: 20px auto;
+                text-align: center;
+            }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Student Data Edit Form</h1>
+        <form action="/update/<%= student._id %>" method="post" enctype="multipart/form-data">
+            <label>Name :</label>
+            <input type="text" name="name" value="<%= student.name %>">
+            <br>
+            <br>
+            <label>City :</label>
+            <input type="text" name="city" value="<%= student.city %>">
+            <br>
+            <br>
+            <label>Age :</label>
+            <input type="number" name="age" value="<%= student.age %>">
+            <br>
+            <br>
+            <label>Profile :</label>
+            <input type="file" name="image" value="<%= student.image %>">
+            <img src="/uploads/<%= student.image %>" width="50"/>
+            <br>
+            <br>
+            <button type="submit" class="btn">Update Student Data</button>
+        </form>
+    </body>
+</html>

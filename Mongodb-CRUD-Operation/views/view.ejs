@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student View Page</title>
+        <style>
+            *{
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            h1{
+                text-align: center;
+                margin: 20px 0;
+            }
+            table{
+                margin: 20px auto;
+                padding: 0;
+            }
+            table tr th, tr td{
+                border: 1px solid #212121;
+                padding: 10px;
+            }
+            .btn{
+                background-color: rgb(0, 55, 139);
+                color: white;
+                display: inline-block;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+            }
+            .deleteBtn{
+                background-color: crimson;
+            }
+            .updateBtn{
+                background-color: rgb(215, 171, 9);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Student Data Table</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Age</th>
+                    <th>Profile Picture</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach(std => { %>
+                    <tr>
+                        <td><%= std.name %></td>
+                        <td><%= std.city %></td>
+                        <td><%= std.age %></td>
+                        <td>
+                            <% if(std.image) { %>
+                                <img src="/uploads/<%= std.image %>" width="50"/>
+                            <% } else { %>
+                                No Image
+                            <% } %>
+                        </td>
+                        <td>
+                            <a href="/edit/<%= std._id %>" class="btn updateBtn">Edit</a> || 
+                            <a href="/delete/<%= std._id %>" onclick="return confirm('Delete this Record?')" class="btn deleteBtn">Delete</a>
+
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <div style="text-align: center;">
+            <a href="/" class="btn">Add More Data.</a>
+        </div>
+    </body>
+</html>
